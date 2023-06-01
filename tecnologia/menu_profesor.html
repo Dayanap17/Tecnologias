@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Servicio web</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: "Inter", sans-serif;
+        background-color: #d9d9d9;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .box {
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10%;
+      }
+
+      .inner-box {
+        background-color: white;
+        border-radius: 40px;
+      }
+
+      #logout-btn {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #logout-btn:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <img src="LOGO_UMNG.png" alt="Imagen" width="40%" />
+        <h1>Rol de docente</h1>
+      </div>
+      <div class="box">
+        <a
+          href="http://localhost/tecnologia/pagina_principal_correcion_profesor.html"
+          style="text-decoration: none"
+        >
+          <div class="box inner-box">
+            <h2>Seguimiento de documentos enviados</h2>
+          </div>
+        </a>
+        <a
+          href="http://localhost/tecnologia/pagina_principal_correcion_profesor.html"
+          style="text-decoration: none"
+        >
+          <div class="box inner-box">
+            <h2>Envío de nuevos documentos</h2>
+          </div>
+        </a>
+        <div class="box inner-box">
+          <h2>Notificaciones</h2>
+        </div>
+      </div>
+    </div>
+    <button id="logout-btn" onclick="logout()">Cerrar sesión</button>
+  </body>
+  <script src="./js/auth.js"></script>
+</html>

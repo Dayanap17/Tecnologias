@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link>  
+    <title>Servicio web</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box-container">
+        <div class="box">
+          <h2>Iniciar Sesión</h2>
+          <div class="form" id="login">
+            <input type="email" id="correoLogin" placeholder="Correo" required />
+            <input type="password" id="contrasenaLogin" placeholder="Contraseña" required />
+            <br /><br /><br />
+            <button onclick="auth()">Iniciar Sesión</button>
+          </div>
+        </div>
+        <div class="box">
+          <h2>Registrarse</h2>
+          <div class="form" id="login">
+            <input type="email" id="correoSignIn" placeholder="Correo" required />
+            <input type="password" id="contrasenaSignIn" placeholder="Contraseña" required />
+            <select id="selectSignIn">
+              <option value="1" id="profesor">Profesor</option>
+              <option value="2" id="centro">Centro de Investigación</option>
+            </select>
+            <button onclick="signin()">Registrarse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/auth.js"></script>
+</html>

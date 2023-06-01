@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>  
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'></link> 
+    <title>Servicio web</title>
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #d9d9d9;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: white;
+        padding: 10px;
+      }
+
+      header img {
+        max-height: 50px;
+      }
+
+      header h1,
+      header p {
+        margin: 0;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+        padding: 20px;
+      }
+
+      .content h2 {
+        margin-top: 0;
+        text-align: center;
+      }
+
+      .document-list {
+        list-style-type: decimal;
+        padding-left: 20px;
+        text-align: left;
+        margin: 0;
+        max-width: 100%;
+      }
+
+      .document-list li {
+        margin-bottom: 10px;
+        margin-right: 10%;
+        margin-left: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .document-list li button {
+        border: none;
+        background-color: #f2f2f2;
+        padding: 5px 16px;
+        border-radius: 5px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .file-upload {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+        background-color: #f2f2f2;
+        padding: 8px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .file-upload input[type="file"] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .file-upload span {
+        display: inline-block;
+        margin-right: 10px;
+        text-align: center;
+      }
+
+      .file-upload.sent:after {
+        content: "Cargado";
+        background-color: #7fc77e;
+      }
+
+      p {
+        margin-right: 15%;
+        width: 80%;
+      }
+
+      .send-all {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .send-all p {
+        margin: 0;
+      }
+
+      .upload-button {
+        color: black;
+      }
+
+      .send-button {
+        font-size: 50px;
+        background-color: #4caf50;
+        /* Color de fondo */
+        border: none;
+        /* Sin borde */
+        color: white;
+        /* Color de texto */
+        padding: 10px 20px;
+        /* Espacio interno */
+        text-align: center;
+        /* Alineación de texto */
+        text-decoration: none;
+        /* Sin decoración de texto */
+        display: inline-block;
+        /* Mostrar como bloque en línea */
+        font-size: 16px;
+        /* Tamaño de fuente */
+        margin: 4px 2px;
+        /* Márgenes */
+        cursor: pointer;
+        /* Cursor al pasar por encima */
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div>
+        <h1>Rol Docente</h1>
+        Envío de Documentación Contrataciones
+      </div>
+      <img src="LOGO_UMNG.png" alt="Logo" />
+    </header>
+    <div class="content">
+      <h2>Envío de documentos completos</h2>
+      <ol class="document-list">
+        <li>
+          <p>1. Cotizaciones de Proovedor 1</p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta1"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button class="upload-button" onclick="enviarDocumento(1)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>2. Cotizaciones de Proovedor 2</p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta2"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="2" class="upload-button" onclick="enviarDocumento(2)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            3. RUT de los dos o más proveedores con fecha de generación o
+            impresión no mayor a 30 días.
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta3"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="3" class="upload-button" onclick="enviarDocumento(3)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            4. Proveedor elegido: Certificado de parafiscales del mes vigente.
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta4"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="4" class="upload-button" onclick="enviarDocumento(4)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            5. Proveedor elegido: Certificado de reglamento de higiene y
+            seguridad industrial firmado por el representante legal y la persona
+            responsable de la implementación del sistema de gestión. (Este
+            certificado aplica para proveedores que tengan 10 a más empleados.
+            Los que tengan menos trabajadores deben enviar igualmente dicha
+            certificación indicando el número de trabajadores que tienen en su
+            empresa).
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta5"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="5" class="upload-button" onclick="enviarDocumento(5)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            5. En caso de no contar con personal a cargo, se debe adjuntar una
+            certificación emitida por el representante legal, en donde lo
+            indique.
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta5.1"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="5.1" class="upload-button" onclick="enviarDocumento(5.1)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            6. Proveedor elegido: Constancia de implementación del sistema de
+            gestión de la seguridad y salud en el trabajo emitido por la ARL
+            indicando el nivel de riesgo.
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta6"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="6" class="upload-button" onclick="enviarDocumento(6)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            7. Proveedor elegido: Concepto de la Vicerrectoría de
+            Investigaciones contratación Directa (firma VICEIN).
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta7"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="7" class="upload-button" onclick="enviarDocumento(7)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            8. Proveedor elegido: Copia de la cedula de ciudadanía,
+            (representante legal).
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta8"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="8" class="upload-button" onclick="enviarDocumento(8)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            9. Proveedor elegido: Certificado Cámara de Comercio de Bogotá con
+            fecha de expedición no mayor a 60 días.
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta9"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="9" class="upload-button" onclick="enviarDocumento(9)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            10. Pantallazo de Requisición en sistema UNIVEX (Requerido solo una
+            vez se habilite la plataforma Univex).
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta10"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="10" class="upload-button" onclick="enviarDocumento(10)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>
+            11. Formato componente técnico (actualizado), diligenciado en su
+            totalidad.
+          </p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta11"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="11" class="upload-button" onclick="enviarDocumento(11)">
+            Enviar
+          </button>
+        </li>
+        <li>
+          <p>12. CDP original vigencia menor a 90 días.</p>
+          <label class="file-upload">
+            <span>Adjuntar archivo</span>
+            <input
+              id="pregunta12"
+              type="file"
+              accept=".pdf,.docx"
+              class="hidden-input"
+            />
+          </label>
+          <button id="12" class="upload-button" onclick="enviarDocumento(12)">
+            Enviar
+          </button>
+        </li>
+      </ol>
+    </div>
+    <div class="extra-content">
+      <!-- <div class="send-all">
+        <button type="submit" class="send-button">
+          Enviar Todos los documentos
+        </button>
+      </div> -->
+      <div class="additional-info" style="text-align: center">
+        <h3>
+          Recuerde que todos los documentos serán enviados al centro de
+          investigación para una revisión de documentos.
+        </h3>
+      </div>
+    </div>
+    <script>
+      // Manejador de eventos para mostrar el nombre del archivo seleccionado y cambiar el estilo al enviar
+      const fileUploads = document.querySelectorAll(
+        '.file-upload input[type="file"]'
+      );
+      fileUploads.forEach((input) => {
+        input.addEventListener("change", (event) => {
+          const fileName = event.target.files[0].name;
+          const span = event.target.parentNode.querySelector("span");
+          span.textContent = fileName;
+          event.target.parentNode.classList.add("sent");
+        });
+      });
+    </script>
+  </body>
+  <script src="./js/files.js"></script>
+</html>

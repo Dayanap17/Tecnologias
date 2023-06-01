@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300&display=swap" rel="stylesheet">
+    <title>Servicio web</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #D9D9D9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+        }
+
+        header img {
+            max-height: 50px;
+        }
+
+        header h1,
+        header p {
+            margin: 0;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            padding: 20px;
+            border-color: black;
+
+        }
+
+        .content h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .document-list {
+            list-style-type: decimal;
+            padding-left: 20px;
+            text-align: left;
+            margin: 0;
+            max-width: 100%;
+            border-color: red;
+        }
+
+        .document-list li {
+            margin-bottom: 10px;
+            margin-right: 10%;
+            margin-left: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-color: red;
+        }
+
+        .document-list li button {
+            border: none;
+            background-color: #f2f2f2;
+            padding: 5px 16px;
+            border-radius: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .file-upload {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            background-color: #f2f2f2;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-upload span {
+            display: inline-block;
+            margin-right: 10px;
+            text-align: center;
+        }
+
+        .file-upload.sent:after {
+            content: 'Enviado';
+            background-color: #7FC77E;
+        }
+
+        p {
+            margin-right: 15%;
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        .send-all {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .send-all p {
+            margin: 0;
+        }
+
+        .send-button {
+            font-size: 50px;
+            background-color: #4CAF50;
+            /* Color de fondo */
+            border: none;
+            /* Sin borde */
+            color: white;
+            /* Color de texto */
+            padding: 10px 20px;
+            /* Espacio interno */
+            text-align: center;
+            /* Alineación de texto */
+            text-decoration: none;
+            /* Sin decoración de texto */
+            display: inline-block;
+            /* Mostrar como bloque en línea */
+            font-size: 16px;
+            /* Tamaño de fuente */
+            margin: 4px 2px;
+            /* Márgenes */
+            cursor: pointer;
+            /* Cursor al pasar por encima */
+            border-radius: 10px;
+        }
+
+        .column {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <h1>Rol Docente</h1>
+            Envío de Documentación Contrataciones
+        </div>
+        <img src="LOGO_UMNG.png" alt="Logo">
+    </header>
+    <div class="content">
+        <h2>Correcion de documentos completos</h2>
+
+        <ol class="document-list">
+            <h4>1. Cotizaciones de Proveedor 1</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple la validez de oferta.</p>                
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>2. Cumple la forma de pago.</p>
+                   
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion2" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion2" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>3. Cumple el tiempo de entrega.</p>
+                    
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion3" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion3" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>4. Cumple el valor total.</p>
+                    
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion4" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion4" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>5. Cumple los datos de cotizaciones y datos de proveedor.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion5" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion5" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>2. Cotizaciones de Proveedor 2</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple la validez de oferta.</p>
+                    
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>2. Cumple la forma de pago.</p>
+                    
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion2" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion2" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>3. Cumple el tiempo de entrega.</p>
+                    
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion3" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion3" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>4. Cumple el valor total.</p>
+                   
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion4" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion4" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>5. Cumple los datos de cotizaciones y datos de proveedor.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion5" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion5" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>3. RUT de los dos o más proveedores con fecha de generación o impresión no mayor a 30 días.</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. El Rut cumple con la fecha no mayor a 30 dias.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>4. Proveedor elegido:Certificado de parafiscales del mes vigente.</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con el certificado de parafiscal del mes vigente no mayor a 15 dias.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>4. Proveedor elegido:Certificados EPS, ARL,AFP con fecha de expedision no mayor a 30 dias.</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con el certificado EPS no mayor a 300 dias.</p>
+                    
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>2. Cumple con el certificado ARL no mayor a 300 dias.</p>
+                    
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion2" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion2" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>3. Cumple con el certificado AFP no mayor a 300 dias.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion3" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion3" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>5. Proveedor elegido:Certificado de reglamento de higiene y seguridad industrial firmado por el
+                representante legal y la persona responsable de la implementación del sistema de gestión. (Este
+                certificado aplica para proveedores que tengan 10 a más empleados. Los que tengan menos trabajadores
+                deben enviar igualmente dicha certificación indicando el número de trabajadores que tienen en su
+                empresa).</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con el Certificado de reglamento de higiene y seguridad.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>5. En caso de no contar con personal a cargo, se debe adjuntar una certificación emitida por el
+                representante legal, en donde lo indique.</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con la certificación emitida por el representante legal.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>6. Proveedor elegido: Constancia de implementación del sistema de gestión de la seguridad y salud en el
+                trabajoemitido por la ARL indicando el nivel de riesgo.</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con la Constancia de implementación del sistema de gestión de la seguridad y salud.</p>
+                    
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+                <li>
+                    <p>2. Indica el nivel de riesgo.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion2" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion2" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>7. Proveedor elegido: Concepto de la Vicerrectoría de Investigaciones contratación Directa (firma
+                VICEIN).</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con el Concepto de la Vicerrectoría de Investigaciones contratación Directa.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>8. Proveedor elegido: Copia de la cedula de ciudadanía, (representante legal).</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con la Copia de la cedula de ciudadanía.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>9. Proveedor elegido: Certificado Cámara de Comercio de Bogotá con fecha de expedición no mayor a 60
+                días.</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con el Certificado Cámara de Comercio de Bogotá con fecha de expedición no mayor a 60
+                        días.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>10. Pantallazo de Requisición en sistema UNIVEX (Requerido solo una vez se habilite la plataforma
+                Univex).</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con el Pantallazo de Requisición en sistema UNIVEX.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>11. Formato componente técnico (actualizado), diligenciado en su totalidad.</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con el Formato componente técnico.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <h4>12. CDP original vigencia menor a 90 días</h4>
+            <ol class="document-list">
+                <li>
+                    <p>1. Cumple con el CDP original vigencia menor a 90 días.</p>
+                    <label class="file-upload">
+                        <span>Adjuntar Archivo Corregido</span>
+                        <input type="file" accept=".pdf,.docx" class="hidden-input">
+                    </label>
+                    <div class="column">
+                        <label>
+                            <input type="radio" name="opcion1" value="si"> Si
+                        </label>
+                        <label>
+                            <input type="radio" name="opcion1" value="no"> No
+                        </label>
+                    </div>
+                </li>
+            </ol>
+            <!-- Resto de las filas -->
+        </ol>
+    </div>
+    <div class="extra-content">
+        <div class="send-all">
+            <button class="send-button">Enviar Todos los documentos corregidos</button>
+        </div>
+        <div class="additional-info" style="text-align: center;">
+            <h3>Recuerde que todos los documentos seran enviados al centro de investigacion para una revision de documentos.</h3>
+        </div>
+
+    </div>
+
+    <script>
+        // Manejador de eventos para mostrar el nombre del archivo seleccionado y cambiar el estilo al enviar
+        const fileUploads = document.querySelectorAll('.file-upload input[type="file"]');
+        fileUploads.forEach((input) => {
+            input.addEventListener('change', (event) => {
+                const fileName = event.target.files[0].name;
+                const span = event.target.parentNode.querySelector('span');
+                span.textContent = fileName;
+                event.target.parentNode.classList.add('sent');
+            });
+        });
+    </script>
+</body>
+
+</html>
